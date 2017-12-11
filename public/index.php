@@ -27,11 +27,12 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
+// Método que obtiene todos los interpretes
 $app->get('/interpretes', function (Request $request, Response $response) {
-    $mapper = new TicketMapper($this->db);
-    $tickets = $mapper->getTickets();
+    $mapper = new InterpreteMapper($this->db);
+    $interpretes = $mapper->getInterpretes();
 
-    $response = $this->view->render($response, "tickets.phtml", ["tickets" => $tickets, "router" => $this->router]);
+    //$response = $this->view->render($response, "tickets.phtml", ["tickets" => $tickets, "router" => $this->router]);
     //return $response;
     return $response->withHeader(
         'Content-Type',
